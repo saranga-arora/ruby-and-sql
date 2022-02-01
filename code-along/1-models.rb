@@ -44,9 +44,25 @@ Company.where({state: "CA"}) #an array of companies where state = CA
 california_company = Company.where({state:"CA"})[0] #just the first company in the array
 puts california_company.inspect #output just the first company in the array
 
+# 4. read column values from row
 puts california_company.read_attribute(:url) #output the url of the california company
 puts california_company.url #easier way to output the url of the california company
 
-# 4. read column values from row
-
 # 5. update attribute value
+california_company.write_attribute(:slogan, "Think different.") #adds the slogan of the california company
+california_company.slogan = "Think different." #easier way to add the slogan
+california_company.save #saves the slogan 
+
+puts california_company.inspect #outputs the company 
+
+# 5. create new company by updating attribute values
+
+new_company = Company.new 
+new_company.name = "Tesla, Inc."
+new_company.url = "https://tesla.com"
+new_company.city = "Palo Alto"
+new_company.state = "CA"
+new_company.save 
+
+puts new_company.inspect 
+puts "There are now #{Company.all.count} companies."
