@@ -24,8 +24,8 @@ values = {  name: "Apple, Inc.", #using hash of key:value pairs;
 
 apple = Company.new(values) #creates new company and passes it values we set above
 apple.save #stores the Apple record into the database
-
 puts "There are now #{Company.all.count} companies."
+
 
 values = {  name: "Amazon, Inc.", #note: we can reuse the variable name, values and redefine it 
             url: "https://amazon.com", 
@@ -37,9 +37,15 @@ amazon.save
 puts "There are now #{Company.all.count} companies."
 
 # 3. query companies table
-puts Company.all #outputs array of all companies in database
-puts Company.all.inspect #shows actual data in the database
-Company.where()
+Company.all #array of all companies in database
+Company.all.inspect #actual data in the database
+
+Company.where({state: "CA"}) #an array of companies where state = CA
+california_company = Company.where({state:"CA"})[0] #just the first company in the array
+puts california_company.inspect #output just the first company in the array
+
+puts california_company.read_attribute(:url) #output the url of the california company
+puts california_company.url #easier way to output the url of the california company
 
 # 4. read column values from row
 
