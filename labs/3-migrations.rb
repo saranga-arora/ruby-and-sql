@@ -24,21 +24,31 @@ Activity.destroy_all
 # 5. Add the relevant associations to the models.
 
 # 6. Insert at least 2 activities into the activities table
+puts "There are now #{Activity.all.count} activities."
+
 activity1 = Activity.new
 activity1.action = "Grabbed tacos"
 brian = Salesperson.where({last_name: "Eng"})[0]
 activity1.salesperson_id = brian.id 
-#tim = Contact.where({first_name:"Tim"})[0]
-#activity1.contact_id = tim.id
+tim = Contact.where({first_name:"Tim"})[0]
+activity1.contact_id = tim.id
 activity1.save
 
-activity1.inspect 
+activity2 = Activity.new
+activity2.action = "Liked a tweet"
+ben = Salesperson.where({last_name: "Block"})[0]
+activity2.salesperson_id = ben.id 
+elon = Contact.where({first_name:"Elon"})[0]
+activity2.contact_id = elon.id
+activity2.save
+
+puts "There are now #{Activity.all.count} activities."
+puts ""
 
 # 7. Loop through the salespeople and display their activites and related contacts, e.g.:
 
-# ---------------------------------
-# Brian Eng
-# Grabbed tacos - Tim Cook
-#
-# Ben Block
-# Liked a tweet - Elon Musk
+for activity in Activity.all 
+    puts "#{activity.salesperson.first_name} #{activity.salesperson.last_name}"
+    puts "#{activity.action} - #{activity.contact.first_name} #{activity.contact.last_name}"
+    puts ""
+end
