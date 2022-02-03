@@ -21,11 +21,13 @@ Activity.destroy_all
 # rails db:migrate
 
 # Activity is the join model between Salesperson and Contact
-# Add the relevant associations to the models.
+# 5. Add the relevant associations to the models.
 
-# 5. Insert at least 2 activities into the activities table
+# 6. Insert at least 2 activities into the activities table
+activity = Activity.new
+activity.action = Grabbed tacos
 
-# 6. Loop through the salespeople and display their activites and related contacts, e.g.:
+# 7. Loop through the salespeople and display their activites and related contacts, e.g.:
 
 # ---------------------------------
 # Brian Eng
