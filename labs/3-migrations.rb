@@ -27,13 +27,12 @@ Activity.destroy_all
 activity1 = Activity.new
 activity1.action = "Grabbed tacos"
 brian = Salesperson.where({last_name: "Eng"})[0]
-brian_id = brian.id 
-activity1.salesperson_id = brian_id 
+activity1.salesperson_id = brian.id 
 #tim = Contact.where({first_name:"Tim"})[0]
 #activity1.contact_id = tim.id
 activity1.save
 
-puts activity1.inspect
+activity1.inspect 
 
 # 7. Loop through the salespeople and display their activites and related contacts, e.g.:
 
